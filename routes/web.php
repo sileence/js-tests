@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('laravel', function () {
+    return 'Laravel';
+});
+
+Route::get('php', function () {
+    return 'PHP';
+});

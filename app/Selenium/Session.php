@@ -53,6 +53,15 @@ class Session
         return $this;
     }
 
+    public function dontSee($html)
+    {
+        Assertion::assertNotContains(
+            $html, $this->driver->byTag('body')->text()
+        );
+
+        return $this;
+    }
+
     protected function getStrategy()
     {
         return new IsolatedStrategy();

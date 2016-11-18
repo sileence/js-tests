@@ -16,4 +16,17 @@ class SeleniumTest extends TestCase
         $this->visitInBrowser('/')
             ->see('Styde');
     }
+
+    public function testTwoRequestsInASingleMethod()
+    {
+        $session1 = $this->visitInBrowser('laravel');
+
+        $session2 = $this->visitInBrowser('php');
+
+        $session1->see('Laravel')
+            ->dontSee('Taylor');
+
+        $session2->see('PHP')
+            ->dontSee('Laravel');
+    }
 }
