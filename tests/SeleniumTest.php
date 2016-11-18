@@ -13,7 +13,8 @@ class SeleniumTest extends SeleniumTestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Styde');
+        $this->visit('/');
+
+        $this->see('Styde');
     }
 }
