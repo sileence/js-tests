@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class SeleniumTest extends SeleniumTestCase
+class SeleniumTest extends TestCase
 {
     /**
      * A basic functional test example.
@@ -13,8 +13,7 @@ class SeleniumTest extends SeleniumTestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/');
-
-        $this->see('Styde');
+        $this->visitInBrowser('/')
+            ->see('Styde');
     }
 }

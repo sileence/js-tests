@@ -10,6 +10,13 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     protected $baseUrl = 'http://js-tests.app';
 
     /**
+     * The default browser to use with the Selenium tests.
+     *
+     * @var string
+     */
+    protected $defaultBrowser = 'firefox';
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application
@@ -23,4 +30,14 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         return $app;
     }
 
+    public function visitInBrowser($url, $browser = null, array $otherParameters = [])
+    {
+        $session = new \App\Selenium\Session(
+            $this->baseUrl,
+            $browser ?: $this->defaultBrowser,
+            $otherParameters
+        );
+
+        return $session->visit($url);
+    }
 }
